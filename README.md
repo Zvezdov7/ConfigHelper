@@ -1,2 +1,3 @@
 # ConfigHelper
-This is config project
+This is a small config project
+ 
