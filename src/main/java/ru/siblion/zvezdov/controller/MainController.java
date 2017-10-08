@@ -8,12 +8,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import ru.siblion.zvezdov.core.FileService;
 
 import java.io.File;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.Map;
 
@@ -48,27 +45,15 @@ public class MainController {
     @CrossOrigin
     public String getFile(@RequestParam("filepath") String path) {
         logger.info("Request for getting the file: " + path);
-        byte[] encoded = new byte[0];
-        try {
-            encoded = Files.readAllBytes(Paths.get(path));
-        } catch (IOException e) {
-            logger.warn("Exception: ", e);
-        }
-        return new String(encoded, StandardCharsets.UTF_8);
+        return FileService.getFileAsString(path);
     }
 
     @RequestMapping(value = "file", method = RequestMethod.POST)
     @ResponseBody
     @CrossOrigin
-    public String setFile(@RequestBody String body, @RequestParam("filepath") String path) {
+    public void setFile(@RequestBody String body, @RequestParam("filepath") String path) {
         logger.info("Request for setting the file: " + path + "\n Text: " + body);
-        try {
-            FileUtils.writeStringToFile(new File(path), body);
-        } catch (IOException e) {
-            logger.warn("Exception: ", e);
-            return "Error";
-        }
-        return "Ok";
+        FileService.writeFileFromString(path, body);
     }
 
 }

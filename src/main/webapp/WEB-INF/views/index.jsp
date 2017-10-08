@@ -31,13 +31,9 @@
             <p class="file"><c:out value="${file}"/></p>
         </c:forEach>
     </div>
-
-    <textarea id="filetext" rows="30" cols="120">
-
-    </textarea>
+    <textarea id="filetext" rows="30" cols="120"></textarea>
     <button id="saveButton">Save file</button>
 </div>
-
 <spring:url value="/resources/js/indexPage.js" var="coreJs" />
 <script src="${coreJs}"></script>
 
