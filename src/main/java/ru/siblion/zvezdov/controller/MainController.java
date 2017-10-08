@@ -4,6 +4,8 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.TrueFileFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,15 +22,22 @@ import java.util.Map;
  */
 
 @Controller
+@PropertySource("classpath:application.properties")
 public class MainController {
     private static final Logger logger = LoggerFactory.getLogger(MainController.class);
+
+    @Value("${folder.int}")
+    private String intFolder;
+
+    @Value("${folder.ext}")
+    private String extFolder;
 
     @RequestMapping("/")
     @CrossOrigin
     public String index(Map<String, Object> model) {
         logger.info("Request for index page");
-        Collection<File> intFiles = FileUtils.listFiles(new File("/Users/Zvezdov/Documents/Tmp/temp"), TrueFileFilter.INSTANCE, TrueFileFilter.INSTANCE);
-        Collection<File> extFiles = FileUtils.listFiles(new File("/Users/Zvezdov/Documents/Tmp/temp"), TrueFileFilter.INSTANCE, TrueFileFilter.INSTANCE);
+        Collection<File> intFiles = FileUtils.listFiles(new File(intFolder), TrueFileFilter.INSTANCE, TrueFileFilter.INSTANCE);
+        Collection<File> extFiles = FileUtils.listFiles(new File(extFolder), TrueFileFilter.INSTANCE, TrueFileFilter.INSTANCE);
         model.put("intFiles", intFiles);
         model.put("extFiles", extFiles);
         return "index";

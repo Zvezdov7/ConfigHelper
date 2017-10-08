@@ -2,10 +2,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>ru.siblion.zvezdov</groupId>
-	<artifactId>springWebApp</artifactId>
+	<artifactId>configHelper</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Spring Web Application</name>
+	<name>ConfigHelper</name>
 	<properties>
 		<java-version>1.7</java-version>
 		<org.springframework-version>4.3.0.RELEASE</org.springframework-version>
@@ -18,95 +18,6 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-orm</artifactId>
-            <version>${org.springframework-version}</version>
-        </dependency>
-
-
-        <!-- Spring Security -->
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-web</artifactId>
-            <version>${springsecurity.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-config</artifactId>
-            <version>${springsecurity.version}</version>
-        </dependency>
-
-        <!-- Spring Security JSP Taglib -->
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-taglibs</artifactId>
-            <version>${springsecurity.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-jdbc</artifactId>
-            <version>${org.springframework-version}</version>
-        </dependency>
-
-        <!-- Spring Data JPA -->
-        <!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa -->
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-jpa</artifactId>
-            <version>1.7.1.RELEASE</version>
-        </dependency>
-
-        <!-- connect to mysql -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.30</version>
-        </dependency>
-
-        <!-- H2 DB -->
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>1.4.190</version>
-        </dependency>
-
-		<!-- Hibernate -->
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
-			<version>4.2.3.Final</version>
-		</dependency>
-
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>5.2.1.Final</version>
-        </dependency>
-
-        <!-- contains: VelocityEngineFactory -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context-support</artifactId>
-            <version>4.1.4.RELEASE</version>
-        </dependency>
-
-        <!-- Velocity -->
-        <dependency>
-            <groupId>org.apache.velocity</groupId>
-            <artifactId>velocity</artifactId>
-            <version>1.7</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.velocity</groupId>
-            <artifactId>velocity-tools</artifactId>
-            <version>2.0</version>
-        </dependency>
-
-
 
         <dependency>
 			<groupId>javax.servlet</groupId>
@@ -127,7 +38,7 @@
             <version>2.4</version>
         </dependency>
 
-
+        <!-- Logging -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
@@ -137,43 +48,8 @@
     </dependencies>
 
 	<build>
-		<finalName>SpringWebApplication</finalName>
+		<finalName>ConfigHelper</finalName>
         <plugins>
-            <!-- usage of jax-ws maven plugin-->
-            <!--<plugin>-->
-                <!--<groupId>org.codehaus.mojo</groupId>-->
-                <!--<artifactId>jaxws-maven-plugin</artifactId>-->
-                <!--<version>1.12</version>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<id>wsimport-from-jdk</id>-->
-                        <!--<goals>-->
-                            <!--<goal>wsimport</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
-                <!--</executions>-->
-                <!--<configuration>-->
-                    <!--<sei></sei>-->
-                    <!--&lt;!&ndash; using wsdl from an url &ndash;&gt;-->
-                    <!--<wsdlUrls>-->
-                        <!--<wsdlUrl>-->
-                            <!--http://192.168.0.138:7004/SoapWebService/SoapWebServiceService?WSDL-->
-                        <!--</wsdlUrl>-->
-                    <!--</wsdlUrls>-->
-                    <!--&lt;!&ndash; or using wsdls file directory &ndash;&gt;-->
-                    <!--&lt;!&ndash; <wsdlDirectory>src/wsdl</wsdlDirectory> &ndash;&gt;-->
-                    <!--&lt;!&ndash; which wsdl file &ndash;&gt;-->
-                    <!--&lt;!&ndash; <wsdlFiles> &ndash;&gt;-->
-                    <!--&lt;!&ndash; <wsdlFile>myWSDL.wsdl</wsdlFile> &ndash;&gt;-->
-                    <!--&lt;!&ndash;</wsdlFiles> &ndash;&gt;-->
-                    <!--&lt;!&ndash; Keep generated files &ndash;&gt;-->
-                    <!--<keep>true</keep>-->
-                    <!--&lt;!&ndash; Package name &ndash;&gt;-->
-                    <!--<packageName>ru.siblion.zvezdov</packageName>-->
-                    <!--&lt;!&ndash; generated source files destination&ndash;&gt;-->
-                    <!--<sourceDestDir>target/generated-sources</sourceDestDir>-->
-                <!--</configuration>-->
-            <!--</plugin>-->
         </plugins>
 		<pluginManagement>
 			<plugins>
@@ -192,7 +68,6 @@
 					<version>2.4</version>
 					<configuration>
 						<warSourceDirectory>src/main/webapp</warSourceDirectory>
-						<warName>spring</warName>
 						<failOnMissingWebXml>false</failOnMissingWebXml>
 					</configuration>
 				</plugin>
