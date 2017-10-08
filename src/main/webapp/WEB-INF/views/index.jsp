@@ -21,22 +21,39 @@
     <c:forEach var="file" items="${files}">
         <p class="file"><c:out value="${file}"/></p>
     </c:forEach>
-    <textarea class="filetext" rows="10" cols="45">
+    <textarea id="filetext" rows="10" cols="45">
 
     </textarea>
-    <button class="saveButton">Save file</button>
+    <button id="saveButton">Save file</button>
 </div>
 
 <script>
     $(".file").click(function(){
+        $(this).siblings('file').removeClass('active');
+        $(this).addClass('active');
         var path = "http://localhost:8080/spring/file?filepath="
         var file = $(this).text();
         var uri = path + file;
         alert(uri);
        $.get(uri, function (data) {
            alert(data);
-            $(".filetext").val(data);
+            $("#filetext").val(data);
        });
+    });
+
+    $("#saveButton").click(function(){
+       var data = $("#filetext").val();
+        var path = "http://localhost:8080/spring/file?filepath=";
+        var file = $(".active").text();
+        var uri = path + file;
+        alert(uri);
+        alert(data);
+        $.ajax({
+           type: "POST",
+            url: uri,
+            data: data,
+            contentType: "text/plain;charset=UTF-8"
+        });
     });
 </script>
 </body>
