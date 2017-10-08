@@ -15,28 +15,37 @@
             src="http://code.jquery.com/jquery-3.2.1.min.js"
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous"></script>
+    <spring:url value="/resources/semantic/semantic.min.css" var="semanticCss" />
+    <link rel="stylesheet" type="text/css" href="${semanticCss}">
 </head>
 <body>
-<div class="container">
-
-    <div class="intFiles">
-        <h4>Int:</h4>
-        <c:forEach var="file" items="${intFiles}">
-            <p class="file"><c:out value="${file}"/></p>
-        </c:forEach>
-    </div>
-    <div class="extFiles">
-        <h4>Ext</h4>
-        <c:forEach var="file" items="${extFiles}">
-            <p class="file"><c:out value="${file}"/></p>
-        </c:forEach>
+<div class="ui container">
+    <div class="ui grid">
+        <div class="eight wide column">
+            <div class="intFiles">
+                <h4>Int:</h4>
+                <c:forEach var="file" items="${intFiles}">
+                    <p class="file"><c:out value="${file}"/></p>
+                </c:forEach>
+            </div>
+        </div>
+        <div class="eight wide column">
+            <div class="extFiles">
+                <h4>Ext</h4>
+                <c:forEach var="file" items="${extFiles}">
+                    <p class="file"><c:out value="${file}"/></p>
+                </c:forEach>
+            </div>
+        </div>
     </div>
     <textarea id="filetext" rows="30" cols="120"></textarea>
     <button id="saveButton">Save file</button>
     <button id="backupButton">Backup file</button>
 </div>
 <spring:url value="/resources/js/indexPage.js" var="coreJs" />
+<spring:url value="/resources/semantic/semantic.min.js" var="semanticJs" />
 <script src="${coreJs}"></script>
+<script src="${semanticJs}"></script>
 
 
 </body>
