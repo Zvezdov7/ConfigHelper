@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: Dmitry Zvezdov
@@ -37,30 +38,9 @@
     <button id="saveButton">Save file</button>
 </div>
 
-<script>
-    $(".file").click(function(){
-        $(".active").removeClass('active');
-        $(this).addClass('active');
-        var path = "http://localhost:8080/ConfigHelper/file?filepath="
-        var file = $(this).text();
-        var uri = path + file;
-       $.get(uri, function (data) {
-            $("#filetext").val(data);
-       });
-    });
+<spring:url value="/resources/js/indexPage.js" var="coreJs" />
+<script src="${coreJs}"></script>
 
-    $("#saveButton").click(function(){
-       var data = $("#filetext").val();
-        var path = "http://localhost:8080/ConfigHelper/file?filepath=";
-        var file = $(".active").text();
-        var uri = path + file;
-        $.ajax({
-           type: "POST",
-            url: uri,
-            data: data,
-            contentType: "text/plain;charset=UTF-8"
-        });
-    });
-</script>
+
 </body>
 </html>
