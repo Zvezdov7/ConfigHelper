@@ -18,10 +18,20 @@
 <body>
 <div class="container">
 
-    <c:forEach var="file" items="${files}">
-        <p class="file"><c:out value="${file}"/></p>
-    </c:forEach>
-    <textarea id="filetext" rows="10" cols="45">
+    <div class="intFiles">
+        <h4>Int:</h4>
+        <c:forEach var="file" items="${intFiles}">
+            <p class="file"><c:out value="${file}"/></p>
+        </c:forEach>
+    </div>
+    <div class="extFiles">
+        <h4>Ext</h4>
+        <c:forEach var="file" items="${extFiles}">
+            <p class="file"><c:out value="${file}"/></p>
+        </c:forEach>
+    </div>
+
+    <textarea id="filetext" rows="30" cols="120">
 
     </textarea>
     <button id="saveButton">Save file</button>
@@ -29,7 +39,7 @@
 
 <script>
     $(".file").click(function(){
-        $(this).siblings('file').removeClass('active');
+        $(".active").removeClass('active');
         $(this).addClass('active');
         var path = "http://localhost:8080/spring/file?filepath="
         var file = $(this).text();

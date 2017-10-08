@@ -27,8 +27,10 @@ public class MainController {
     @CrossOrigin
     public String index(Map<String, Object> model) {
         logger.info("Request for index page");
-        Collection<File> files = FileUtils.listFiles(new File("/Users/Zvezdov/Documents/Tmp/temp"), TrueFileFilter.INSTANCE, TrueFileFilter.INSTANCE);
-        model.put("files", files);
+        Collection<File> intFiles = FileUtils.listFiles(new File("/Users/Zvezdov/Documents/Tmp/temp"), TrueFileFilter.INSTANCE, TrueFileFilter.INSTANCE);
+        Collection<File> extFiles = FileUtils.listFiles(new File("/Users/Zvezdov/Documents/Tmp/temp"), TrueFileFilter.INSTANCE, TrueFileFilter.INSTANCE);
+        model.put("intFiles", intFiles);
+        model.put("extFiles", extFiles);
         return "index";
     }
 
