@@ -21,3 +21,15 @@ $("#saveButton").click(function(){
         contentType: "text/plain;charset=UTF-8"
     });
 });
+$("#backupButton").click(function(){
+    var data = $("#filetext").val();
+    var path = "http://localhost:8080/ConfigHelper/file?filepath=";
+    var file = $(".active").text();
+    var uri = path + file + ".backup";
+    $.ajax({
+        type: "POST",
+        url: uri,
+        data: data,
+        contentType: "text/plain;charset=UTF-8"
+    });
+});

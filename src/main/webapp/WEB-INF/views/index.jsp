@@ -33,6 +33,7 @@
     </div>
     <textarea id="filetext" rows="30" cols="120"></textarea>
     <button id="saveButton">Save file</button>
+    <button id="backupButton">Backup file</button>
 </div>
 <spring:url value="/resources/js/indexPage.js" var="coreJs" />
 <script src="${coreJs}"></script>
