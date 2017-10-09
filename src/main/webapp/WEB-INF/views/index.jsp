@@ -25,7 +25,7 @@
     <button id="backupButton">Backup file</button>
     <div class="ui grid">
         <div class="eight wide column">
-            <div class="intFiles">
+            <div class="intFiles" style="height:200px;overflow:scroll;">
                 <h4>Int:</h4>
                 <c:forEach var="file" items="${intFiles}">
                     <p class="file"><c:out value="${file}"/></p>
@@ -33,7 +33,7 @@
             </div>
         </div>
         <div class="eight wide column">
-            <div class="extFiles">
+            <div class="extFiles" style="height:200px;overflow:scroll;">
                 <h4>Ext</h4>
                 <c:forEach var="file" items="${extFiles}">
                     <p class="file"><c:out value="${file}"/></p>
