@@ -20,6 +20,9 @@
 </head>
 <body>
 <div class="ui container">
+    <textarea id="filetext" rows="30" cols="120"></textarea>
+    <button id="saveButton">Save file</button>
+    <button id="backupButton">Backup file</button>
     <div class="ui grid">
         <div class="eight wide column">
             <div class="intFiles">
@@ -38,9 +41,6 @@
             </div>
         </div>
     </div>
-    <textarea id="filetext" rows="30" cols="120"></textarea>
-    <button id="saveButton">Save file</button>
-    <button id="backupButton">Backup file</button>
 </div>
 <spring:url value="/resources/js/indexPage.js" var="coreJs" />
 <spring:url value="/resources/semantic/semantic.min.js" var="semanticJs" />
