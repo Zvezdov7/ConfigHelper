@@ -20,12 +20,15 @@
 </head>
 <body>
 <div class="ui container">
-    <textarea id="filetext" rows="30" cols="120"></textarea>
-    <button id="saveButton">Save file</button>
-    <button id="backupButton">Backup file</button>
+    <h2>Файлы конфигурации сервера</h2>
+    <div>
+        <textarea id="filetext" rows="30" cols="120"></textarea>
+    </div>
+    <button id="saveButton" class="ui primary button">Save file</button>
+    <button id="backupButton" class="ui secondary button">Backup file</button>
     <div class="ui grid">
         <div class="eight wide column">
-            <div class="intFiles" style="height:200px;overflow:scroll;">
+            <div class="intFiles" style="height:200px;overflow:scroll;overflow-x: hidden;">
                 <h4>Int:</h4>
                 <c:forEach var="file" items="${intFiles}">
                     <p class="file"><c:out value="${file}"/></p>
@@ -33,7 +36,7 @@
             </div>
         </div>
         <div class="eight wide column">
-            <div class="extFiles" style="height:200px;overflow:scroll;">
+            <div class="extFiles" style="height:200px;overflow:scroll;overflow-x: hidden;">
                 <h4>Ext</h4>
                 <c:forEach var="file" items="${extFiles}">
                     <p class="file"><c:out value="${file}"/></p>

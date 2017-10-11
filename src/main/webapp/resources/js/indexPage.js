@@ -11,8 +11,8 @@ $(".file").click(function(){
 
 $("#saveButton").click(function(){
     var data = $("#filetext").val();
-    var path = "http://localhost:8080/ConfigHelper/file?filepath=";
     var file = $(".active").text();
+    var path = "http://localhost:8080/ConfigHelper/file?filepath=";
     var uri = path + file;
     $.ajax({
         type: "POST",
